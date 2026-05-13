@@ -1,4 +1,5 @@
 import SidebarItem from '../SidebarItem'
+import { sidebarLinks } from '../sidebarLinks'
 
 const Sidebar = () => {
   return (

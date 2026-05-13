@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { loginUser } from "../api/authApi";
-import { setToken, removeToken } from "../utils/authStorage";
+import { getToken, setToken, removeToken } from "../utils/authStorage";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -10,7 +10,7 @@ export const login = createAsyncThunk(
       setToken(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.response?.data || "Unable to login");
     }
   }
 );
@@ -19,7 +19,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
-    token: null,
+    token: getToken(),
     loading: false,
     error: null,
   },

@@ -1,4 +1,4 @@
-const { default: PageContainer } = require("@/app/components/layout/container/PageContainer")
+import PageContainer from "../../../components/layout/container/PageContainer";
 
 const DashboardPage = () => {
   return (
